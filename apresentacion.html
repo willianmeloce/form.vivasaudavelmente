@@ -5,24 +5,23 @@
 <title>TAO – Digital</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- ⭐ VTURB FIX – CONFIGURAÇÃO GLOBAL DO PLAYER -->
+<!-- ⭐ VTURB FIX – CONFIGURAÇÃO GLOBAL (ANTES DO PLAYER) -->
 <script>
   window.smartplayer = window.smartplayer || {};
   window.smartplayer.config = {
     autoplay: true,
-    muted: false,          // 🔊 força áudio
+    muted: false,        // 🔊 força áudio
     volume: 1,
     controls: true,
-    captions: false,       // ❌ desativa legendas
+    captions: false,     // ❌ desativa legendas
     subtitles: false,
     loop: false
   };
 </script>
 
-<!-- Preloads VTurb -->
+<!-- Preload SmartPlayer -->
 <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer/v1/smartplayer.min.js" as="script">
-<link rel="preload" href="https://scripts.converteai.net/cd5c8cea-065d-4162-a74b-c834cbea562d/players/694c04f87fac75e58d24116b/player.js" as="script">
-<link rel="preload" href="https://images.converteai.net/cd5c8cea-065d-4162-a74b-c834cbea562d/players/694c04f87fac75e58d24116b/thumbnail.jpg" as="image">
+<link rel="preload" href="https://scripts.converteai.net/cd5c8cea-065d-4162-a74b-c834cbea562d/players/694c165271611df8184c6e19/v4/player.js" as="script">
 
 <style>
 body {
@@ -37,7 +36,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin-top: 10px;
+  margin-top: 12px;
   color: #fff;
   font-weight: bold;
 }
@@ -58,19 +57,17 @@ body {
 
 <body>
 
-<!-- PLAYER -->
-<div id="vid_694c04f87fac75e58d24116b"
-     style="position:relative;width:100%;max-width:420px;margin:auto;padding-top:177.77%;">
-  <img
-    src="https://images.converteai.net/cd5c8cea-065d-4162-a74b-c834cbea562d/players/694c04f87fac75e58d24116b/thumbnail.jpg"
-    style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
-</div>
+<!-- ⭐ PLAYER VTURB (NOVO VÍDEO) -->
+<vturb-smartplayer
+  id="vid-694c165271611df8184c6e19"
+  style="display:block;margin:0 auto;width:100%;max-width:400px;">
+</vturb-smartplayer>
 
-<!-- ⭐ VTURB FIX – SCRIPT DO PLAYER -->
-<script>
+<!-- ⭐ SCRIPT DO PLAYER (v4) -->
+<script type="text/javascript">
 (function(){
   var s = document.createElement("script");
-  s.src = "https://scripts.converteai.net/cd5c8cea-065d-4162-a74b-c834cbea562d/players/694c04f87fac75e58d24116b/player.js";
+  s.src = "https://scripts.converteai.net/cd5c8cea-065d-4162-a74b-c834cbea562d/players/694c165271611df8184c6e19/v4/player.js";
   s.async = true;
   document.head.appendChild(s);
 })();
@@ -84,15 +81,15 @@ body {
 
 <script>
 (function(){
-  let current = 700 + Math.floor(Math.random()*80);
+  let current = 700 + Math.floor(Math.random() * 80);
   const el = document.getElementById("viewers");
 
   function update(){
-    current += Math.floor(Math.random()*15)-5;
-    if(current<620) current=620;
-    if(current>980) current=980;
-    el.textContent = current+" personas están viendo ahora";
-    setTimeout(update,2000+Math.random()*3000);
+    current += Math.floor(Math.random() * 15) - 5;
+    if (current < 620) current = 620;
+    if (current > 980) current = 980;
+    el.textContent = current + " personas están viendo ahora";
+    setTimeout(update, 2000 + Math.random() * 3000);
   }
   update();
 })();
